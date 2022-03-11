@@ -1,5 +1,6 @@
 package bk.vaskevich;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import io.restassured.RestAssured;
@@ -47,6 +48,9 @@ public class DemoWebShopTest {
 
         getWebDriver().manage().addCookie(new Cookie("NOPCOMMERCE.AUTH",
                 autorizationCookie.get("NOPCOMMERCE.AUTH")));
+
+        open("");
+        $(".account").shouldHave(Condition.text("qaguru@qa.guru"));
 
         open("/cart");
         String cartSize = $("#topcartlink .cart-qty").getText();
