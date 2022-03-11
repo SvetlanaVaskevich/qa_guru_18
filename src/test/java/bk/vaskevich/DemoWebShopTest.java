@@ -5,6 +5,7 @@ import com.codeborne.selenide.WebDriverRunner;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Cookie;
@@ -74,8 +75,8 @@ public class DemoWebShopTest {
         assertThat(actualCartSize.compareTo(cartSizeBeforeAdded));
     }
 
-    @AfterAll
-    static void close(){
+    @AfterEach
+    void close(){
         WebDriverRunner.closeWebDriver();
     }
 
